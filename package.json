@@ -1,0 +1,19 @@
+{
+  "name": "smart-garden-iot-mqtt",
+  "version": "1.0.0",
+  "description": "Smart garden IoT demo with frontend, backend, ESP32 firmware, and Web MQTT over WebSocket.",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js"
+  },
+  "keywords": [
+    "iot",
+    "smart-garden",
+    "mqtt",
+    "websocket",
+    "esp32"
+  ],
+  "author": "",
+  "license": "MIT"
+}

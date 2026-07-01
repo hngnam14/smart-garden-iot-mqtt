@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Garden IoT MQTT</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Smart Garden</p>
+          <h1>Vườn thông minh điều khiển bằng Web MQTT</h1>
+          <p class="subtitle">
+            Theo dõi độ ẩm đất, nhiệt độ, ánh sáng, mưa, mực nước và điều khiển tưới cây theo thời gian thực.
+          </p>
+        </div>
+        <div class="connection-card">
+          <span id="statusDot" class="dot"></span>
+          <div>
+            <strong id="connectionText">Đang kết nối Web MQTT...</strong>
+            <small id="brokerText">ws://localhost:3100/mqtt</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid two-cols">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Cảm biến</p>
+              <h2>Dữ liệu mới nhất</h2>
+            </div>
+            <span id="updatedAt" class="time-pill">--:--:--</span>
+          </div>
+          <div class="sensor-grid">
+            <div class="sensor-card">
+              <span>Nhiệt độ</span>
+              <strong id="temperature">--</strong>
+              <small>độ C</small>
+            </div>
+            <div class="sensor-card">
+              <span>Độ ẩm không khí</span>
+              <strong id="humidity">--</strong>
+              <small>%</small>
+            </div>
+            <div class="sensor-card">
+              <span>Độ ẩm đất</span>
+              <strong id="soilMoisture">--</strong>
+              <small>%</small>
+            </div>
+            <div class="sensor-card">
+              <span>Ánh sáng</span>
+              <strong id="light">--</strong>
+              <small>%</small>
+            </div>
+            <div class="sensor-card">
+              <span>Mưa</span>
+              <strong id="rain">--</strong>
+              <small>rain sensor</small>
+            </div>
+            <div class="sensor-card">
+              <span>Mực nước</span>
+              <strong id="waterLevel">--</strong>
+              <small>%</small>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel alert-panel">
+          <p class="eyebrow">Cảnh báo</p>
+          <h2 id="alertTitle">Khu vườn ổn định</h2>
+          <p id="alertMessage">Chưa có cảnh báo mới từ Web MQTT.</p>
+          <div class="topic-box">
+            <span>Topic nhận cảnh báo</span>
+            <code>garden/alert</code>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Điều khiển</p>
+            <h2>Thiết bị trong vườn</h2>
+          </div>
+          <button id="refreshBtn" class="ghost-btn">Nạp lại trạng thái</button>
+        </div>
+        <div id="deviceGrid" class="device-grid"></div>
+      </section>
+
+      <section class="grid two-cols">
+        <article class="panel">
+          <p class="eyebrow">Web MQTT topics</p>
+          <h2>Kênh giao tiếp</h2>
+          <table>
+            <tbody>
+              <tr>
+                <td>Telemetry</td>
+                <td><code>garden/sensor/telemetry</code></td>
+              </tr>
+              <tr>
+                <td>Gửi lệnh</td>
+                <td><code>garden/device/{id}/set</code></td>
+              </tr>
+              <tr>
+                <td>Trạng thái</td>
+                <td><code>garden/device/{id}/state</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+        <article class="panel">
+          <p class="eyebrow">Nhật ký</p>
+          <h2>Sự kiện Web MQTT</h2>
+          <ul id="eventLog" class="event-log"></ul>
+        </article>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
