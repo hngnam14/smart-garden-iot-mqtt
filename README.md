@@ -72,7 +72,7 @@ ws://localhost:3100/mqtt
 - `frontend/index.html` và `frontend/style.css`: giao diện dashboard vườn thông minh.
 - `firmware/esp32_smart_garden_iot.cpp`: code ESP32 đọc cảm biến thật và gửi dữ liệu về dashboard.
 
-## Cách demo với giáo viên
+## Cách demo 
 
 1. Chạy `npm start`.
 2. Mở `http://localhost:3100`.
